@@ -132,4 +132,16 @@ public class OrganoService {
 		return organoRepo.findById(idOrgano);
 	}
 
+	public Iterable<Organo> findAll() {
+		return organoRepo.findAll();
+	}
+
+	public void save(Organo organo) {		
+		organoRepo.save(organo);
+	}
+	
+	public void delete(long id){
+		organoRepo.deleteById(id);
+	}
+
 }
