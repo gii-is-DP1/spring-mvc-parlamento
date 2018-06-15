@@ -97,4 +97,8 @@ public class ParlamentarioService {
 		
 	}
 
+	public Iterable<Parlamentario> findAll() {
+		return parlamentarioRepo.findAll();
+	}
+
 }
