@@ -51,7 +51,8 @@ public class OrganoController {
 	public ModelAndView salvarOrgano(   @ModelAttribute("organo")  Organo organo){		
 		organosService.save(organo);
 		ModelAndView result=listadoOrganos();		
-		result.addObject("msg", "Organo salvado con éxito!");		
+		result.addObject("mensaje", "Organo salvado con éxito!");		
+		result.addObject("tipomensaje", "success");
 		return result;
 	}
 	
@@ -59,7 +60,8 @@ public class OrganoController {
 	public ModelAndView delteOrgano(@PathVariable("id") long id){		
 		organosService.delete(id);
 		ModelAndView result=listadoOrganos();		
-		result.addObject("msg", "Organo borrado con éxito!");		
+		result.addObject("mensaje", "Organo borrado con éxito!");		
+		result.addObject("tipomensaje", "success");
 		return result;
 	}
 	

@@ -15,11 +15,14 @@
 	<h2>Órganos:</h2>
 	<div class="container">
 		<br />
-		<div class="alert alert-success">
-			<strong>Ok!</strong> Funciona!
+		<c:if test="${mensaje != null}">
+		<div class="alert alert-${tipomensaje}">
+			<c:out value="${mensaje}"></c:out>
 			<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
 		</div>
+		</c:if>
 	</div>
+	<a href="/organos/create"><span class="glyphicon glyphicon-plus sucess" aria-hidden="true"></span>Crear Órgano</a>
 	<table class="table table-striped">
 		<tr>
 			<th>Abreviatura</th>
