@@ -100,5 +100,17 @@ public class ParlamentarioService {
 	public Iterable<Parlamentario> findAll() {
 		return parlamentarioRepo.findAll();
 	}
+	
+	public void deleteById(long id) {
+		parlamentarioRepo.deleteById(id);
+	}
+
+	public void save(Parlamentario parlamentario) {
+		parlamentarioRepo.save(parlamentario);
+	}
+
+	public Optional<Parlamentario> findById(long id) {
+		return parlamentarioRepo.findById(id);
+	}
 
 }
