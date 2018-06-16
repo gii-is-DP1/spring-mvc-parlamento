@@ -37,8 +37,8 @@ public class ParlamentarioController<ParalamentarioSevice> {
 	@GetMapping(path="/create")
 	public ModelAndView crearParlamentario(){		
 		ModelAndView result=new ModelAndView("EditarParlamentario");	
-		result.addObject("parlamentario", new Organo());
-		result.addObject("organos", organoService.findAll());
+		result.addObject("parlamentario", new Parlamentario());
+		result.addObject("todosOrganos", organoService.findAll());
 		return result;
 	}
 	
@@ -46,7 +46,7 @@ public class ParlamentarioController<ParalamentarioSevice> {
 	public ModelAndView editarParlamentario(@PathVariable("id") long id){		
 		ModelAndView result=new ModelAndView("EditarParlamentario");	
 		result.addObject("parlamentario", parlamentarioService.findById(id));
-		result.addObject("organos", organoService.findAll());
+		result.addObject("todosOrganos", organoService.findAll());
 		return result;
 	}
 	

@@ -1,3 +1,6 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.japarejo.springmvc.model.entities.Parlamentario"%>
+<%@page import="com.japarejo.springmvc.model.entities.Organo"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -30,14 +33,21 @@
 			
 			<th>Acciones</th>
 		</tr>
-		 <%=((java.util.List)request.getAttribute("parlamentarios")).size() %>
-		<c:forEach items="${parlamentarios}" var="p">
+		 <% ArrayList<Parlamentario> parls=((ArrayList<Parlamentario>)request.getAttribute("parlamentarios")); 
+		 	for(Parlamentario p:parls){
+		 	%>		
 			<tr>
-				<td>${p.nombre}</td>				
-				<td></td>
-				<td><a href="/parlamentarios/edit/${p.id}" ><span class="glyphicon glyphicon-pencil warning" aria-hidden="true"></span></a>&nbsp;<a href="/parlamentarios/delete/${p.id}"><span class="glyphicon glyphicon-trash alert" aria-hidden="true"></a> </td>
+				<td><%=p.getNombre()%></td>				
+				<td>Miembro de:
+					<ul>
+					<% for(Organo o:p.getOrganos()){ %>
+						<li><%= o.getDescripcion()%></li>
+					<% } %>
+					</ul>
+				</td>
+				<td><a href="/parlamentarios/edit/<%=p.getId() %>" ><span class="glyphicon glyphicon-pencil warning" aria-hidden="true"></span></a>&nbsp;<a href="/parlamentarios/delete/<%=p.getId() %>"><span class="glyphicon glyphicon-trash alert" aria-hidden="true"></a> </td>
 			</tr>
-		</c:forEach>
+		<% } %>
 	</table>
 </body>
 </html>
