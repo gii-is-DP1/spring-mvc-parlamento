@@ -140,9 +140,9 @@ public class SesionService {
 		organoService.printOrganos();
 		String organoId=in.readLine();
 		Long idOrgano=Long.parseLong(organoId);
-		Optional<Organo> organo=organoService.findById(idOrgano);
-		if(organo.isPresent())
-			s.setOrgano(organo.get());
+		Organo organo=organoService.findById(idOrgano);
+		if(organo!=null)
+			s.setOrgano(organo);
 
 		
 		System.out.println("Indique el Id del tipo de sesion de la  sesión:");

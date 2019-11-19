@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.japarejo.springmvc.model.entities.Organo;
@@ -127,11 +128,12 @@ public class OrganoService {
 			}
 		}
 	}
-
-	public Optional<Organo> findById(Long idOrgano) {
-		return organoRepo.findById(idOrgano);
+	@Cacheable(value = "organo.byId", key = "#idOrgano")
+	public Organo findById(Long idOrgano) {
+		return organoRepo.findById(idOrgano).get();
 	}
 
+	
 	public Iterable<Organo> findAll() {
 		return organoRepo.findAll();
 	}

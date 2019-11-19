@@ -5,13 +5,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
-
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 /**
  * The persistent class for the ORGANO database table.
  * 
  */
 @Entity
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Table(name="ORGANO")
 public class Organo implements Serializable {
 	private static final long serialVersionUID = 1L;

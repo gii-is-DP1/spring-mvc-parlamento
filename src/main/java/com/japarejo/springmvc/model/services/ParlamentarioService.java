@@ -89,9 +89,9 @@ public class ParlamentarioService {
 		parlamentario.getOrganos().clear();
 		for(String organoId:arrayOrganos) {
 			if(!"".equals(organoId)) {				
-				Optional<Organo> organo=organoService.findById(Long.parseLong(organoId));
-				if(organo.isPresent())
-					parlamentario.getOrganos().add(organo.get());
+				Organo organo=organoService.findById(Long.parseLong(organoId));
+				if(organo!=null)
+					parlamentario.getOrganos().add(organo);
 			}
 		}
 		
