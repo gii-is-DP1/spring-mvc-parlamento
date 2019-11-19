@@ -57,6 +57,10 @@
         <persistence strategy="localTempSwap"/>
     </cache>
 
+	<cache name="com.japarejo.springmvc.model.entities.Organo"
+           maxElementsInMemory="10000" eternal="false" timeToIdleSeconds="600"
+           timeToLiveSeconds="3600" overflowToDisk="true"/>
+
     <cache name="organo.byId"
            maxElementsInMemory="10000" eternal="false" timeToIdleSeconds="600"
            timeToLiveSeconds="3600" overflowToDisk="true"/>
