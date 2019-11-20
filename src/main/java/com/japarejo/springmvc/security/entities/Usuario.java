@@ -1,4 +1,4 @@
-package com.japarejo.springmvc.model.entities;
+package com.japarejo.springmvc.security.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;

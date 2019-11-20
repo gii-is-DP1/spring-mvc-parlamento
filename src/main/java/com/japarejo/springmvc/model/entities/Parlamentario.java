@@ -3,6 +3,7 @@ package com.japarejo.springmvc.model.entities;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,9 +12,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
-import com.sun.org.apache.xalan.internal.xsltc.dom.ArrayNodeListIterator;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
-@Entity	
+import com.sun.org.apache.xalan.internal.xsltc.dom.ArrayNodeListIterator;
+@Entity
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Parlamentario {
 
 	@Id
