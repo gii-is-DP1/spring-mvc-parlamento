@@ -27,6 +27,9 @@ public class Usuario implements Serializable {
 	@Column(nullable=false, length=100)
 	private String permiso;
 
+	@Column(nullable=false, length=100)
+	private String grupo;
+	
 	public Usuario() {
 	}
 
@@ -61,5 +64,15 @@ public class Usuario implements Serializable {
 	public void setPermiso(String permiso) {
 		this.permiso = permiso;
 	}
+
+	public String getGrupo() {
+		return grupo;
+	}
+
+	public void setGrupo(String grupo) {
+		this.grupo = grupo;
+	}
+	
+	
 
 }
