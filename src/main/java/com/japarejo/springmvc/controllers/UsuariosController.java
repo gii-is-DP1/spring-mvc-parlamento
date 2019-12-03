@@ -6,8 +6,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.japarejo.springmvc.security.repositories.UsuarioRepository;
-import com.japarejo.springmvc.security.entities.*;
+import com.japarejo.springmvc.model.entities.Usuario;
+import com.japarejo.springmvc.model.repositories.UsuarioRepository;
+
+
+
 
 @RestController
 public class UsuariosController {
