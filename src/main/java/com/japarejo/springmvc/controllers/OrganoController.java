@@ -1,6 +1,8 @@
 package com.japarejo.springmvc.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -28,7 +30,7 @@ public class OrganoController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		result.addObject("organos", organosService.findAll());
+		result.addObject("organos", organosService.findAll());		
 		return result;
 	}
 	
