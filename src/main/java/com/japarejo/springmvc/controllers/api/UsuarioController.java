@@ -44,7 +44,7 @@ public class UsuarioController {
 	    usuario=usuariosRepository.save(usuario);
 	    URI uri=null;
 	    try {
-			uri=new URI("/empleados/"+usuario.getId());
+			uri=new URI("/api/usuarios/"+usuario.getId());
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
 		}
