@@ -120,5 +120,10 @@ public class SalaService {
 	}
 
 
+	public Sala findByDescripcion(String descripcion) {
+		return salaRepo.findByDescripcion(descripcion);		
+	}
+
+
 	
 }

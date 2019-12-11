@@ -8,4 +8,6 @@ import com.japarejo.springmvc.model.entities.Sala;
 @Repository
 public interface SalaRepository extends CrudRepository<Sala, Long> {
 
+	public Sala findByDescripcion(String descripcion);
+
 }
