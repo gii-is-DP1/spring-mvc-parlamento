@@ -2,6 +2,11 @@ package com.japarejo.springmvc.model.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Length;
 
 
 /**
@@ -18,10 +23,13 @@ public class Sala implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(unique=true, nullable=false, precision=10)
 	private long id;
-
+	@NotNull
+	@NotBlank
 	@Column(nullable=false, length=10)
 	private String activo;
-
+	@NotBlank
+	@NotNull
+	@Size	(min=3)
 	@Column(nullable=false, length=100)
 	private String descripcion;
 
