@@ -4,7 +4,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import javax.persistence.*;
+
+import org.springframework.hateoas.RepresentationModel;
 
 
 /**
@@ -13,7 +16,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="ORGANO")
-public class Organo implements Serializable {
+public class Organo extends RepresentationModel<Organo> implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id

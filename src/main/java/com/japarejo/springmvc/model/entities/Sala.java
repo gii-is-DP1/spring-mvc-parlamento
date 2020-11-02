@@ -2,6 +2,11 @@ package com.japarejo.springmvc.model.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Length;
 
 
 /**
@@ -18,10 +23,13 @@ public class Sala implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(unique=true, nullable=false, precision=10)
 	private long id;
-
+	@NotNull
+	@NotBlank
 	@Column(nullable=false, length=10)
 	private String activo;
-
+	@NotBlank
+	@NotNull
+	@Size	(min=3)
 	@Column(nullable=false, length=100)
 	private String descripcion;
 
@@ -52,4 +60,40 @@ public class Sala implements Serializable {
 		this.descripcion = descripcion;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((activo == null) ? 0 : activo.hashCode());
+		result = prime * result + ((descripcion == null) ? 0 : descripcion.hashCode());
+		result = prime * result + (int) (id ^ (id >>> 32));
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Sala other = (Sala) obj;
+		if (activo == null) {
+			if (other.activo != null)
+				return false;
+		} else if (!activo.equals(other.activo))
+			return false;
+		if (descripcion == null) {
+			if (other.descripcion != null)
+				return false;
+		} else if (!descripcion.equals(other.descripcion))
+			return false;
+		if (id != other.id)
+			return false;
+		return true;
+	}
+
+	
+	
 }

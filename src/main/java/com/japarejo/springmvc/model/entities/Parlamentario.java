@@ -11,10 +11,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import org.springframework.hateoas.RepresentationModel;
+
 import com.sun.org.apache.xalan.internal.xsltc.dom.ArrayNodeListIterator;
 
 @Entity	
-public class Parlamentario {
+public class Parlamentario extends  RepresentationModel<Organo>{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
