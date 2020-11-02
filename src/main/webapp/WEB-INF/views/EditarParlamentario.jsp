@@ -34,7 +34,7 @@
      			</td>
 			</tr>
 			<tr>
-				<td><a href="/palamentarios" class="btn btn-secondary">Cancelar</a></td>
+				<td><a href="/parlamentarios" class="btn btn-secondary">Cancelar</a></td>
 				<td><input type="submit" value="Guardar" class="btn btn-primary"/></td>
 			</tr>
 		</table>

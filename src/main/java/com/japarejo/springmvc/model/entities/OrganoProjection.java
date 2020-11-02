@@ -8,3 +8,4 @@ public interface OrganoProjection {
 	String getAbreaviatura();
 	String getDescripcion();
 }
+

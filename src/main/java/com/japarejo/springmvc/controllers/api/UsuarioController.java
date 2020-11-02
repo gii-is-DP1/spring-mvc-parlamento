@@ -56,7 +56,7 @@ public class UsuarioController {
 		if(id==null)
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"You must proide a valid usuario identifier");
 		Optional<Usuario> usuarioPrevio=usuariosRepository.findById(id);
-		if(usuarioPrevio.isEmpty())
+		if(!usuarioPrevio.isPresent())
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND,"There is not any user with id="+id);
 		usuariosRepository.save(usuario);
 		return ResponseEntity.noContent().build();
@@ -67,7 +67,7 @@ public class UsuarioController {
 		if(id==null)
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"You must proide a valid usuario identifier");
 		Optional<Usuario> usuarioPrevio=usuariosRepository.findById(id);
-		if(usuarioPrevio.isEmpty())
+		if(!usuarioPrevio.isPresent())
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND,"There is not any user with id="+id);
 		usuariosRepository.deleteById(id);
 		return ResponseEntity.noContent().build();

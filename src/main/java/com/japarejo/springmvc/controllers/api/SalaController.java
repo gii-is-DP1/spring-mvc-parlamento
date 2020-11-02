@@ -61,7 +61,7 @@ public class SalaController {
 		if(id==null)
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"You must proide a valid identifier");
 		Optional<Sala> salaPrevia=salaRepository.findById(id);
-		if(salaPrevia.isEmpty())
+		if(!salaPrevia.isPresent())
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND,"There is not any user with id="+id);
 		salaRepository.save(sala);
 		return ResponseEntity.noContent().build();
@@ -72,7 +72,7 @@ public class SalaController {
 		if(id==null)
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"You must proide a valid usuario identifier");
 		Optional<Sala> salaPrevia=salaRepository.findById(id);
-		if(salaPrevia.isEmpty())
+		if(!salaPrevia.isPresent())
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND,"There is not any user with id="+id);
 		salaRepository.deleteById(id);
 		return ResponseEntity.noContent().build();
