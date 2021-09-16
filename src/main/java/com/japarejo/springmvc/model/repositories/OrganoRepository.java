@@ -7,5 +7,6 @@ import com.japarejo.springmvc.model.entities.Organo;
 
 @Repository
 public interface OrganoRepository extends CrudRepository<Organo, Long> {
-
+	
+	Organo findByAbreaviatura(String a);
 }

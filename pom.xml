@@ -57,9 +57,14 @@
 			<artifactId>spring-boot-devtools</artifactId>
 		</dependency>
 
-		<dependency>
+		<!-- dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
+		</dependency-->
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
 		</dependency>
 		<!-- Necesitamos esto para compilar JSP -->
 		<dependency>
