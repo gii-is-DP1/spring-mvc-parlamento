@@ -8,4 +8,6 @@ import com.japarejo.springmvc.model.entities.Parlamentario;
 @Repository
 public interface ParlamentarioRepository extends CrudRepository<Parlamentario,Long> {
 
+	Parlamentario findByNombre(String nombre);
+
 }
