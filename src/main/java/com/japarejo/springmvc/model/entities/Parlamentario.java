@@ -54,6 +54,11 @@ public class Parlamentario {
 	public void setOrganos(List<Organo> organos) {
 		this.organos = organos;
 	}
+
+	@Override
+	public String toString() {
+		return  nombre;
+	}
 	
 	
 }

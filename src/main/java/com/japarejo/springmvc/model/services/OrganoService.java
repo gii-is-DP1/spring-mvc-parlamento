@@ -97,7 +97,7 @@ public class OrganoService {
 					{ "GPS", "G.P. Socialista", "1" },
 					{ "IULV-CA", "G.P. Izquierda Unida Los Verdes-Convocatoria por Andalucía", "5" },
 					{ "GPP", "G.P. Popular Andaluz", "2" }, { "GPPD", "G.P. Podemos Andalucía", "3" },
-					{ "GPC", "G.P. Ciudadanos", "4" } };
+					{ "GPC", "G.P. Ciudadanos", "4" },{"GOBIERNO","Gobierno","1"} };
 			Organo organo = null;
 			for (int i = 0; i < organos.length; i++) {
 				organo = new Organo();
@@ -142,6 +142,10 @@ public class OrganoService {
 	
 	public void delete(long id){
 		organoRepo.deleteById(id);
+	}
+
+	public Organo findByAbreviatura(String string) {
+		return organoRepo.findByAbreaviatura(string);
 	}
 
 }
