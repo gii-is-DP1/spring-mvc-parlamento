@@ -25,7 +25,7 @@
 	<ul>
         <li><a href="/boards">Manage Boards</a></li>
         <li><a href="/members">Manage Members</a></li>
-        <li><a href="">Manage Rooms</a></li>
+        <li><a href="/rooms">Manage Rooms</a></li>
         <li><a href="">Manage Sessions</a></li>
     </ul>
 </body>

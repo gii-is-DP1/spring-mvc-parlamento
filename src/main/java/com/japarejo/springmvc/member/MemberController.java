@@ -24,34 +24,34 @@ public class MemberController<ParalamentarioSevice> {
 	@GetMapping
 	public ModelAndView showMembers(){
 		Iterable<Member> parlamentarios=memberService.findAll();
-		ModelAndView result=new ModelAndView("ListadoParlamentarios");
-		result.addObject("parlamentarios", parlamentarios);
+		ModelAndView result=new ModelAndView("MembersListing");
+		result.addObject("members", parlamentarios);
 		return result;
 		
 	}
 	
 	@GetMapping(path="/create")
 	public ModelAndView crearteMember(){		
-		ModelAndView result=new ModelAndView("EditarParlamentario");	
-		result.addObject("parlamentario", new Member());
-		result.addObject("todosOrganos", boardService.findAll());
+		ModelAndView result=new ModelAndView("EditMember");	
+		result.addObject("member", new Member());
+		result.addObject("allBoards", boardService.findAll());
 		return result;
 	}
 
 	@PostMapping(path="/create")
-	public ModelAndView saveNewMember(@ModelAttribute("parlamentario")  Member member) {
+	public ModelAndView saveNewMember(@ModelAttribute("member")  Member member) {
 		memberService.save(member);
 		ModelAndView result=showMembers();	
-		result.addObject("mensaje", "Parlamentario creado con éxito");
-		result.addObject("tipomensaje", "sucess");
+		result.addObject("message", "Member created sucessfully!");
+		result.addObject("messageType", "sucess");
 		return result;
 	}
 	
 	@GetMapping(path="/edit/{id}")
 	public ModelAndView editarParlamentario(@PathVariable("id") long id){		
-		ModelAndView result=new ModelAndView("EditarParlamentario");	
-		result.addObject("parlamentario", memberService.findById(id));
-		result.addObject("todosOrganos", boardService.findAll());
+		ModelAndView result=new ModelAndView("EditMember");	
+		result.addObject("member", memberService.findById(id));
+		result.addObject("allBoards", boardService.findAll());
 		return result;
 	}
 	
@@ -59,8 +59,8 @@ public class MemberController<ParalamentarioSevice> {
 	public ModelAndView grabarParlamentario(@ModelAttribute("member")  Member member, @PathVariable("id") long id) {
 		memberService.save(member);
 		ModelAndView result=showMembers();	
-		result.addObject("mensaje", "Member sucessfully updated");
-		result.addObject("tipomensaje", "sucess");
+		result.addObject("message", "Member sucessfully updated");
+		result.addObject("menssageType", "sucess");
 		return result;
 	}
 	
@@ -68,8 +68,8 @@ public class MemberController<ParalamentarioSevice> {
 	public ModelAndView borrarParlamentario(@PathVariable("id") long id){
 		memberService.deleteById(id);
 		ModelAndView result=showMembers();	
-		result.addObject("mensaje", "Parlamentario borrado con éxito");
-		result.addObject("tipomensaje", "sucess");
+		result.addObject("message", "Member deleted sucessfully!");
+		result.addObject("messageType", "sucess");
 		return result;
 	}
 }
