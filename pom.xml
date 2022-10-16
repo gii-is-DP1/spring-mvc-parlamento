@@ -66,6 +66,11 @@
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+		<dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.20</version>    
+        </dependency>
 		<!-- Necesitamos esto para compilar JSP -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
