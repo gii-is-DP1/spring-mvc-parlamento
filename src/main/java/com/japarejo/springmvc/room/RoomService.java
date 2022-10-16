@@ -22,19 +22,8 @@ public class RoomService {
 		if (!iterador.hasNext()) {
 			// No existen organos, vamos a crearlos:
 			System.out.println("No hay salas!, vamos a incializarlas...");
-			String[][] salas = { {"Salón de Plenos","1"},
-								 {"Sala de Junta de Portavoces","1"},
-								 {"Sala 1ª de Comisiones","1"},
-								 {"Sala 2ª de Comisiones","1"},
-								 {"Sala 3ª de Comisiones","1"},
-								 {"Sala Mesa de Comisiones A","1"},
-								 {"Sala 4ª de Comisiones","1"},
-								 {"Sala Mesa de Comisiones B","1"},
-								 {"Sala Mesa de Comisiones C","1"},
-								 {"Sala Mesa de Comisiones D","1"},
-								 {"Sala de reuniones Mesa de la Cámara","1"},
-								 {"Sede Parlamentaria","1"},
-								 {"Sala contigua Salón de Plenos-Antigua Sacristía","1"}
+			String[][] salas = { {"Sala de Plenos","1"},
+								 {"Sala de Junta de Portavoces","1"}								 
 								};
 			Room sala = null;
 			for (int i = 0; i < salas.length; i++) {

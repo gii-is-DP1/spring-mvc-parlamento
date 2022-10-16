@@ -9,3 +9,7 @@ INSERT INTO Board(id, shortname,description) VALUES
 (9, 'GPPD', STRINGDECODE('G.P. Podemos Andaluc\u00eda')),
 (10, 'GPC', 'G.P. Ciudadanos'),
 (11, 'GOBIERNO', 'Gobierno');
+
+INSERT INTO Room(id,description,active) VALUES 
+(1,'Sala de Plenos',1),
+(2,'Sala de Junta de Portavoces',1);

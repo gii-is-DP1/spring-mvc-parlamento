@@ -2,7 +2,7 @@
 --
 id: Integer
 shortname: String {Length(3,8}
-description: String {NotEmpti}
+description: String {NotBlank}
 
 </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1000</x><y>410</y><w>210</w><h>60</h></coordinates><panel_attributes>Member
 --
@@ -12,7 +12,7 @@ name: String {Length(5,20}
 --
 id: Integer
 active: Boolean
-description: String {NotEmpty}
+description: String {NotBlank}
 fg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>750</x><y>420</y><w>270</w><h>50</h></coordinates><panel_attributes>lt=-
 m1=0..n
 m2=0..n
@@ -34,7 +34,7 @@ legislature: Long {Min(1)}
 fg=Red</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>690</x><y>630</y><w>210</w><h>80</h></coordinates><panel_attributes>SessionType
 --
 id: Integer
-description: String {NotEmpty}
+description: String {NotBlank}
 active: Boolean
 fg=red
 </panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>890</x><y>660</y><w>140</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
