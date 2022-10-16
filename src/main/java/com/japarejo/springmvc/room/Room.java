@@ -4,5 +4,5 @@ import java.io.Serializable;
 
 public class Room implements Serializable {
 	private Boolean active;
-	private String descripcion;
+	private String description;
 }
