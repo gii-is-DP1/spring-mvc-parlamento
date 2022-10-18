@@ -1,6 +1,7 @@
 package com.japarejo.springmvc.room;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,21 @@ public class RoomService {
 	    return salaRepo.findAll();
 	}
 	
+	@Transactional
+	public void deleteRoom(int id) {
+	    salaRepo.deleteById((long) id);
+	}
+
+	@Transactional(readOnly = true)
+    public Room getRoomById(int id) {
+	    Optional<Room> result=salaRepo.findById((long) id);
+	    return result.isPresent()?result.get():null;         
+    }
+	
+	@Transactional 
+	public void save(Room r) {
+	    salaRepo.save(r);
+	}
 
 /* 
 			System.out.println("No hay salas!, vamos a incializarlas...");

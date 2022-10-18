@@ -17,7 +17,7 @@ import lombok.Setter;
 public class Room implements Serializable {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(unique=true, nullable=false, precision=10)
 	private long id;
 
