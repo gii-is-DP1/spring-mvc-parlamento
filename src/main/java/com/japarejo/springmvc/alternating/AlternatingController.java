@@ -39,7 +39,7 @@ public class AlternatingController {
 		return gobierno();
 	}
 	
-	@GetMapping("/govern")
+	@GetMapping("/government")
 	public ModelAndView gobierno() {
 		ModelAndView result=new ModelAndView("MembersListing");
 		Board gobierno=orgServ.findByShortname("GOBIERNO");
@@ -49,6 +49,6 @@ public class AlternatingController {
 			result.addObject("members",Collections.EMPTY_LIST);
 		result.addObject("message","Government");
 		return result;
-	} 
+	}  
 	
 }

@@ -36,7 +36,7 @@ public class AlternatingService {
 		this.transactionTemplate = new TransactionTemplate(transactionManager);   
 	} 
 
-	
+	@Transactional(rollbackFor = {LuxuryMansionException.class,ShittyMasterException.class})
 	public void alternanting() throws ShittyMasterException, LuxuryMansionException {		
 		/*transactionTemplate.execute(
 				  new TransactionCallbackWithoutResult() { 
@@ -57,7 +57,7 @@ public class AlternatingService {
 		
 	}
  
-	
+	@Transactional(rollbackFor = {LuxuryMansionException.class,ShittyMasterException.class})
 	private void modificarOrganos(List<Member> members) throws ShittyMasterException, LuxuryMansionException {
 		
 	    // Remove the previous members of the government

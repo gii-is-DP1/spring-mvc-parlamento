@@ -17,3 +17,17 @@ INSERT INTO Room(id,description,active) VALUES
 INSERT INTO User(id,login,password,role) VALUES
 (1,'member1','m3mb3r','member'),
 (2,'admin1','4dm1n','admin');
+
+INSERT INTO MEMBER (id, name) VALUES 
+(1,'Chikito de la Calzada'),
+(2,'Gila'),
+(3,'Tip'),
+(4,'Coll'),
+(5,'Eugenio');
+
+INSERT INTO Member_boards (members_id,boards_id) VALUES
+(1,11), -- Chikito for president
+(2,11), -- Gila for minister of defence
+(3,11), -- Tip for  minister of economy
+(4,11), -- Coll for minister of education
+(5,11); -- Eugenio for minister of health
