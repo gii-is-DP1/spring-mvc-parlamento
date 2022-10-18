@@ -57,6 +57,7 @@ public class AlternatingService {
 		
 	}
  
+	
 	private void modificarOrganos(List<Member> parlamentarios) throws ShittyMasterException, LuxuryMansionException {
 
 		Board mesa = organoService.findByShortname("MESA");

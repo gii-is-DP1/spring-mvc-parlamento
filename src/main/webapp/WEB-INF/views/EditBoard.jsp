@@ -26,10 +26,6 @@
 				<td><mvc:input path="description" /></td>
 			</tr>
 			<tr>
-				<td><mvc:label path="order">Order:</mvc:label></td>
-				<td><mvc:input path="order" /></td>
-			</tr>
-			<tr>
 				<td><mvc:label path="shortname">Short name:</mvc:label></td>
 				<td><mvc:input path="shortname" /></td>
 			</tr>
