@@ -41,12 +41,13 @@ public class AlternatingController {
 	
 	@GetMapping("/govern")
 	public ModelAndView gobierno() {
-		ModelAndView result=pc.showMembers();
+		ModelAndView result=new ModelAndView("MembersListing");
 		Board gobierno=orgServ.findByShortname("GOBIERNO");
 		if(gobierno!=null)
-			result.addObject("parlamentarios", gobierno.getMembers());
+			result.addObject("members", gobierno.getMembers());
 		else
-			result.addObject("parlamentarios",Collections.EMPTY_LIST);
+			result.addObject("members",Collections.EMPTY_LIST);
+		result.addObject("message","Government");
 		return result;
 	} 
 	
