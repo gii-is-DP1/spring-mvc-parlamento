@@ -39,7 +39,7 @@ public class AlternatingController {
 		return gobierno();
 	}
 	
-	@GetMapping("/govern")
+	@GetMapping("/government")
 	public ModelAndView gobierno() {
 		ModelAndView result=pc.showMembers();
 		Board gobierno=orgServ.findByShortname("GOBIERNO");
