@@ -7,6 +7,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 
 @Service
@@ -14,24 +15,11 @@ public class BoardService {
 
 	@Autowired
 	private BoardRepository organoRepo;
-	
-	public void borrarOrgano(BufferedReader in) {
-		Long id;
-		try {
-			id = Long.parseLong(in.readLine());
-			organoRepo.deleteById(id);
-		} catch (NumberFormatException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}				
-	}
+		
 
 	
-
-	public void initializeOrganos() throws Exception {
+	@Transactional
+	public void initializeBoards() throws Exception {
 		Iterable<Board> organoIter = organoRepo.findAll();
 		Iterator<Board> iterador = organoIter.iterator();
 		if (!iterador.hasNext()) {
@@ -56,23 +44,27 @@ public class BoardService {
 		}
 	}
 	
-	
+	@Transactional(readOnly = true)
 	public Optional<Board> findById(Long idOrgano) {
 		return organoRepo.findById(idOrgano);
 	}
 
+	@Transactional(readOnly = true)
 	public Iterable<Board> findAll() {
 		return organoRepo.findAll();
 	}
 
+	@Transactional
 	public void save(Board organo) {		
 		organoRepo.save(organo);
 	}
 	
+	@Transactional
 	public void delete(long id){
 		organoRepo.deleteById(id);
 	}
 
+	@Transactional(readOnly = true)
 	public Board findByShortname(String string) {
 		return organoRepo.findByShortname(string);
 	}

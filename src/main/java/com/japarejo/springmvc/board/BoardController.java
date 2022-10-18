@@ -18,13 +18,7 @@ public class BoardController {
 	
 	@GetMapping
 	public ModelAndView listadoOrganos(){		
-		ModelAndView result=new ModelAndView("BoardsListing");
-		try {
-			boardsService.initializeOrganos();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		ModelAndView result=new ModelAndView("BoardsListing");		
 		result.addObject("boards", boardsService.findAll());
 		return result;
 	}
