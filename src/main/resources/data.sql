@@ -13,3 +13,7 @@ INSERT INTO Board(id, shortname,description) VALUES
 INSERT INTO Room(id,description,active) VALUES 
 (1,'Sala de Plenos',1),
 (2,'Sala de Junta de Portavoces',1);
+
+INSERT INTO User(id,login,password,role) VALUES
+(1,'member1','m3mb3r','member'),
+(2,'admin1','4dm1n','admin');
