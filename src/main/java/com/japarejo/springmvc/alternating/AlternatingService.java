@@ -26,10 +26,10 @@ public class AlternatingService {
 			"amoroso", "carmesí", "diodenarr", "de la pradera" };
 
 	@Autowired
-	MemberService parlamentarioService;
+	MemberService memberService;
 
 	@Autowired
-	BoardService organoService;
+	BoardService boardService;
 	private TransactionTemplate transactionTemplate;
 
 	public AlternatingService(PlatformTransactionManager transactionManager) {
@@ -43,7 +43,7 @@ public class AlternatingService {
 				   protected void doInTransactionWithoutResult(TransactionStatus status) {
 				    try {*/
 				    	
-				    	parlamentarioService.resetBoards();
+				    	memberService.resetBoards();
 						List<Member> parlamentarios = crearUObtenerParlamentarios();
 						modificarOrganos(parlamentarios); 
 				    
@@ -58,13 +58,18 @@ public class AlternatingService {
 	}
  
 	
-	private void modificarOrganos(List<Member> parlamentarios) throws ShittyMasterException, LuxuryMansionException {
-
-		Board mesa = organoService.findByShortname("MESA");
-		Board juntaPortavoces = organoService.findByShortname("JP");
-		Board gobierno = organoService.findByShortname("GOBIERNO");
+	private void modificarOrganos(List<Member> members) throws ShittyMasterException, LuxuryMansionException {
+		
+	    // Remove the previous members of the government
+		Board gov = boardService.findByShortname("GOBIERNO");		
+		for(Member m:gov.getMembers()) {
+            m.getBoards().remove(gov);        
+		}
+		gov.getMembers().clear();
+		boardService.save(gov);
 		int i = 0;
-		for (Member parlamentario : parlamentarios) {
+        // Add the new members of the government		
+		for (Member member : members) {
 			double random = Math.random();
 			if (i > 0) {
 				if (random < PROBEXCEPTION) {
@@ -72,14 +77,10 @@ public class AlternatingService {
 				} else if (random < 2 * PROBEXCEPTION) {
 					throw new LuxuryMansionException();
 				}
-			}
-			parlamentario.getBoards().add(mesa);
-			parlamentario.getBoards().add(juntaPortavoces);
-			parlamentario.getBoards().add(gobierno);
-			gobierno.getMembers().add(parlamentario);
-			mesa.getMembers().add(parlamentario);
-			juntaPortavoces.getMembers().add(parlamentario);
-			parlamentarioService.save(parlamentario);			
+			}			
+			member.getBoards().add(gov);
+			gov.getMembers().add(member);			
+			memberService.save(member);			
 			i++;
 		}
 	}
@@ -87,17 +88,18 @@ public class AlternatingService {
 	@Transactional
 	public List<Member> crearUObtenerParlamentarios() {
 		List<Member> result = new ArrayList<>();
-		Member parlamentario = null;
+		Member member = null;
 		String name = null;
 		for (int i = 0; i < NPARLAMENTARIOS; i++) {
 			name = generateRandomName();
-			parlamentario = parlamentarioService.findByNombre(name);
-			if (parlamentario == null) {
-				parlamentario = new Member();
-				parlamentario.setName(name);
-				parlamentarioService.save(parlamentario);
+			member = memberService.findByNombre(name);
+			if (member == null) {
+				member = new Member();
+				member.setName(name);
+				member.setBoards(new ArrayList<Board>());
+				memberService.save(member);
 			}
-			result.add(parlamentario);
+			result.add(member);
 		}
 		return result;
 	}
