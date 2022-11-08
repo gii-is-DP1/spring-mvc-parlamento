@@ -31,3 +31,7 @@ INSERT INTO Member_boards (members_id,boards_id) VALUES
 (3,11), -- Tip for  minister of economy
 (4,11), -- Coll for minister of education
 (5,11); -- Eugenio for minister of health
+
+INSERT INTO SessionType(id,active,description) VALUES (1,1,'Duelo de baile');
+
+INSERT INTO Session (id, sala_id,fecha,board_id) VALUES (1,1,'2022-11-01',11);
