@@ -47,9 +47,9 @@ public class Session implements Serializable {
 		boolean result=false;
 		if(s!=null){
 			if(date.equals(s.getDate()))	{
-				if(this.startTime.after(s.startTime) && this.startTime.before(s.endTime))){
+				if(this.startTime.after(s.startTime) && this.startTime.before(s.endTime)){
 					result=true;
-				}else if(this.startTime.before(s.startTime) && this.endTime.after(s.endTime)){
+				}else if(this.endTime.after(s.startTime) && this.endTime.before(s.endTime)){
 					result=true;
 				}
 			}
