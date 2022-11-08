@@ -34,4 +34,4 @@ INSERT INTO Member_boards (members_id,boards_id) VALUES
 
 INSERT INTO SessionType(id,active,description) VALUES (1,1,'Duelo de baile');
 
-INSERT INTO Session (id, sala_id,fecha,board_id) VALUES (1,1,'2022-11-01',11);
+INSERT INTO Session (id, sala_id,date,board_id) VALUES (1,1,'2022-11-01',11);
