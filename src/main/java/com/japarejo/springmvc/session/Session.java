@@ -12,16 +12,26 @@ import lombok.Setter;
 import java.util.Date;
 import java.sql.Timestamp;
 
+@Entity
+@Getter
+@Setter
 public class Session implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	@Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)   
+    private long id;
+		
 	private Date fecha;
-
+	
+	@ManyToOne()
 	private Board board;
-
+	
+	@ManyToOne()
 	private Room sala;
 	
+	@ManyToOne()
 	private SessionType sessionType;
 
 	private Timestamp endTime;
