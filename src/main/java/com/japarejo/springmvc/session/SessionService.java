@@ -9,14 +9,10 @@ import com.japarejo.springmvc.room.RoomService;
 @Service
 public class SessionService {
 	
-	@Autowired
-	private BoardService boardService;
-	
+	@Autowired		
 	private SessionRepository sessionRepo;
 		
-	private SessionTypeService sessionTypeService;
 	
-	private RoomService roomService;
 
 
 	
