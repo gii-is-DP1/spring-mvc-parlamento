@@ -27,12 +27,19 @@ public class SessionRepositoryTest {
     }
 
     @Test
-    public void testFindByDate(){    
+    public void testFindByDateSuccess(){    
         LocalDate date=LocalDate.of(2022,11,1);
         List<Session> sesioneSalaPlenos=sr.findByDate(date);
         assertNotNull(sesioneSalaPlenos);
         assertFalse(sesioneSalaPlenos.isEmpty());
         
+    }
+
+    @Test
+    public void testFindByDateNull(){    
+        List<Session> sesioneSalaPlenos=sr.findByDate(null);
+        assertNotNull(sesioneSalaPlenos);
+        assertTrue(sesioneSalaPlenos.isEmpty());
     }
 }
     
