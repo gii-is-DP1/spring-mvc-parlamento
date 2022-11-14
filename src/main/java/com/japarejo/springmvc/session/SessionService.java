@@ -1,24 +1,34 @@
 package com.japarejo.springmvc.session;
 
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.japarejo.springmvc.board.BoardService;
-import com.japarejo.springmvc.room.RoomService;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class SessionService {
 	
-	@Autowired
-	private BoardService boardService;
-	
 	private SessionRepository sessionRepo;
-		
-	private SessionTypeService sessionTypeService;
 	
-	private RoomService roomService;
+	@Autowired
+	public SessionService(SessionRepository sessionRepository) {
+		this.sessionRepo = sessionRepository;
+	}
 
-
+	@Transactional
+	public Session save(Session s) throws ConcurrentSessionException {
+		List<Session> sessions = sessionRepo.findByDate(s.getDate());
+		for (Session prevSession: sessions) {
+			if (prevSession.isConcurrentWith(s)) {
+				throw new ConcurrentSessionException();
+			}
+		}
+		Session saved = sessionRepo.save(s);		
+		return saved;			
+	}
 	
+
 
 }
