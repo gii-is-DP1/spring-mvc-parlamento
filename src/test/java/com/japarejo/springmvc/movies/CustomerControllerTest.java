@@ -43,11 +43,11 @@ public class CustomerControllerTest {
         Movie m2 = new Movie();
         Movie m3 = new Movie();
         m1.setTitle("M1");
-        m1.setPriceCode(PriceCode.CHILDRENS);
+        m1.setPrice(new ChildrensPrice());
         m2.setTitle("M2");
-        m2.setPriceCode(PriceCode.NEW_RELEASE);
+        m2.setPrice(new NewReleasePrice());
         m3.setTitle("M3");
-        m3.setPriceCode(PriceCode.REGULAR);
+        m3.setPrice(new RegularPrice());
         Customer c = new Customer();
         Rental r1 = new Rental();        
         Rental r2 = new Rental();

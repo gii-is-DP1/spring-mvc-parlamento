@@ -39,11 +39,11 @@ INSERT INTO Session (id, room_id,date,board_id) VALUES (1,1,'2022-11-01',11);
 
 INSERT INTO Customer(id, name) VALUES (1, 'Juan');
 
-INSERT INTO Movie(id, title, priceCode) VALUES (1, 'M1', 0);
-INSERT INTO Movie(id, title, priceCode) VALUES (2, 'M2', 1);
-INSERT INTO Movie(id, title, priceCode) VALUES (3, 'M3', 2);
-INSERT INTO Movie(id, title, priceCode) VALUES (4, 'M4', 1);
-INSERT INTO Movie(id, title, priceCode) VALUES (5, 'M5', 1);
+INSERT INTO Movie(id, title, price) VALUES (1, 'M1', 'CHILDRENS');
+INSERT INTO Movie(id, title, price) VALUES (2, 'M2', 'REGULAR');
+INSERT INTO Movie(id, title, price) VALUES (3, 'M3', 'NEW_RELEASE');
+INSERT INTO Movie(id, title, price) VALUES (4, 'M4', 'REGULAR');
+INSERT INTO Movie(id, title, price) VALUES (5, 'M5', 'REGULAR');
 
 INSERT INTO Rental(id, daysrented, movie_id) VALUES (1, 3, 1);
 insert into Rental(id, daysrented, movie_id) values (2, 2, 2);
