@@ -26,24 +26,17 @@ public class CustomerController {
     @GetMapping(path="/customer/{id}/statement")
     public String showStatement(@PathVariable("id") Long id, ModelMap modelMap) {
         Customer c = this.service.findById(id);
-        double totalAmount = 0;
-        int frequentRenterPoints = 0;
         Map<Rental, Double> rentalInfo = new HashMap<Rental, Double>();
 
         modelMap.put("customer", c);
 
         for (Rental rental : c.getRentals()) {
-            double thisAmount = rental.getCharge();
-
-            frequentRenterPoints += rental.getFrequentRenterPoints();
-            //show figures
-            rentalInfo.put(rental, thisAmount);
-            totalAmount += thisAmount;
+            rentalInfo.put(rental, rental.getCharge());
         }
         
         modelMap.put("rentalInfo", rentalInfo);
-        modelMap.put("totalAmount", totalAmount);
-        modelMap.put("earnedPoints", frequentRenterPoints);
+        modelMap.put("totalAmount", c.getTotalCharge());
+        modelMap.put("earnedPoints", c.getTotalFrequentRenterPoints());
 
         return STATEMENT_VIEW;
     }    

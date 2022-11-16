@@ -23,5 +23,21 @@ public class Customer {
     private List<Rental> rentals;
 
     private String name;
+
+    public double getTotalCharge() {
+        double result = 0;
+        for (Rental rental : getRentals()) {
+            result += rental.getCharge();
+        }
+        return result;
+    }
+
+    public int getTotalFrequentRenterPoints() {
+        int result = 0;
+        for (Rental rental : getRentals()) {
+            result += rental.getFrequentRenterPoints();
+        }
+        return result;
+    }
 }
 
