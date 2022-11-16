@@ -13,7 +13,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Rental {
-	double getCharge() {
+	public double getCharge() {
         double result = 0;
         //determine amounts for each line
         if (getMovie().getPriceCode().equals(PriceCode.REGULAR)) {
@@ -28,6 +28,14 @@ public class Rental {
                 result += (getDaysRented() - 3) * 1.5;             
         }
         return result;
+    }
+
+    public int getFrequentRenterPoints() {
+        // add bonus for a two day new release rental
+        if ((getMovie().getPriceCode() == PriceCode.NEW_RELEASE) && getDaysRented() > 1) 
+            return 2;
+        else
+            return 1;
     }
 
     @Id

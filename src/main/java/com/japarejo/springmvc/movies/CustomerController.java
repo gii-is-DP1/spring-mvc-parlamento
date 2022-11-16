@@ -33,15 +33,9 @@ public class CustomerController {
         modelMap.put("customer", c);
 
         for (Rental rental : c.getRentals()) {
-            double thisAmount = 0;
-            thisAmount = rental.getCharge();
+            double thisAmount = rental.getCharge();
 
-            // add frequent renter points
-            frequentRenterPoints ++;
-
-            // add bonus for a two day new release rental
-            if ((rental.getMovie().getPriceCode() == PriceCode.NEW_RELEASE) && rental.getDaysRented() > 1) 
-                frequentRenterPoints ++;
+            frequentRenterPoints += rental.getFrequentRenterPoints();
             //show figures
             rentalInfo.put(rental, thisAmount);
             totalAmount += thisAmount;
