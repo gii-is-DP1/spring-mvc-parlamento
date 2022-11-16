@@ -34,18 +34,7 @@ public class CustomerController {
 
         for (Rental rental : c.getRentals()) {
             double thisAmount = 0;
-            //determine amounts for each line
-            if (rental.getMovie().getPriceCode().equals(PriceCode.REGULAR)) {
-                thisAmount += 2;
-                if (rental.getDaysRented() > 2)
-                    thisAmount += (rental.getDaysRented() - 2) * 1.5;             
-            } else if (rental.getMovie().getPriceCode().equals(PriceCode.NEW_RELEASE)) {
-                thisAmount += rental.getDaysRented() * 3; 
-            } else if (rental.getMovie().getPriceCode().equals(PriceCode.CHILDRENS)) {
-                thisAmount += 1.5;
-                if (rental.getDaysRented() > 3)
-                    thisAmount += (rental.getDaysRented() - 3) * 1.5;             
-            }
+            thisAmount = amountFor(rental);
 
             // add frequent renter points
             frequentRenterPoints ++;
@@ -63,5 +52,22 @@ public class CustomerController {
         modelMap.put("earnedPoints", frequentRenterPoints);
 
         return STATEMENT_VIEW;
+    }
+
+    private double amountFor(Rental rental) {
+        double thisAmount = 0;
+        //determine amounts for each line
+        if (rental.getMovie().getPriceCode().equals(PriceCode.REGULAR)) {
+            thisAmount += 2;
+            if (rental.getDaysRented() > 2)
+                thisAmount += (rental.getDaysRented() - 2) * 1.5;             
+        } else if (rental.getMovie().getPriceCode().equals(PriceCode.NEW_RELEASE)) {
+            thisAmount += rental.getDaysRented() * 3; 
+        } else if (rental.getMovie().getPriceCode().equals(PriceCode.CHILDRENS)) {
+            thisAmount += 1.5;
+            if (rental.getDaysRented() > 3)
+                thisAmount += (rental.getDaysRented() - 3) * 1.5;             
+        }
+        return thisAmount;
     }    
 }
