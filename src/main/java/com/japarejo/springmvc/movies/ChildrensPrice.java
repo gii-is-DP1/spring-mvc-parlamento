@@ -13,6 +13,13 @@ public class ChildrensPrice extends Price {
         if (daysRented > 3)
             result += (daysRented - 3) * 1.5;             
         return result;
+    }
+
+    @Override
+    public int getFrequentRenterPoints(int daysRented) {
+        return 1;
     }    
+
+    
     
 }
