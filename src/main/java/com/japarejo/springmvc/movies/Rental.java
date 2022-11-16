@@ -13,12 +13,29 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Rental {
-	@Id
+	double getCharge() {
+        double result = 0;
+        //determine amounts for each line
+        if (getMovie().getPriceCode().equals(PriceCode.REGULAR)) {
+            result += 2;
+            if (getDaysRented() > 2)
+                result += (getDaysRented() - 2) * 1.5;             
+        } else if (getMovie().getPriceCode().equals(PriceCode.NEW_RELEASE)) {
+            result += getDaysRented() * 3; 
+        } else if (getMovie().getPriceCode().equals(PriceCode.CHILDRENS)) {
+            result += 1.5;
+            if (getDaysRented() > 3)
+                result += (getDaysRented() - 3) * 1.5;             
+        }
+        return result;
+    }
+
+    @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)   
     private long id;
 		
     @ManyToOne
     private Movie movie; 
-    
+
     private int daysRented;    
 }
